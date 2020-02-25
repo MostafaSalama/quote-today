@@ -8,14 +8,22 @@ const app = {
 	changeQuoteUi() {
 		const p = document.querySelector('blockquote > p');
 		const cite = document.querySelector('blockquote cite');
-		if (app.quotes){
-		    const randomQuote = this.getNewRandomQuote() ;
-		    p.innerText = randomQuote.text ;
-		    cite.innerText = randomQuote.author ;
-        }
+		if (app.quotes) {
+			const randomQuote = this.getNewRandomQuote();
+			p.innerText = randomQuote.text;
+			cite.innerText = randomQuote.author;
+		}
 	},
 };
 document.addEventListener('DOMContentLoaded', () => {
+	const btn = document.getElementById('btn-new');
+	btn.addEventListener('click', () => {
+		if (app.quotes) {
+			app.changeQuoteUi();
+		} else {
+			getRandomQuote();
+		}
+	});
 	getRandomQuote();
 });
 
